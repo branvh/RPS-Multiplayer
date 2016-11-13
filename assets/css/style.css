@@ -1,0 +1,47 @@
+#scoreboard{
+
+	position: relative;
+	top: 20px;
+
+}
+
+h2 {
+	margin: 0px auto 30px auto;
+
+}
+
+#p2-scoreboard {
+	float: right;
+}
+
+#p1-header, #p2-header {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#input-name{
+	width: 50%;
+}
+
+
+#name-submit, #inputDefault, #chat-form, #chat-submit {
+	float: left;
+	margin-right: 5px;
+}
+
+#inputDefault, #chat-form{
+	width: 50%;
+}
+
+#chat-form{
+	margin-bottom: 1px;
+	width: 100%;
+}
+
+#status-message{
+	color: red;
+}
+.selection:hover{
+	background-color: grey;
+	color: white;
+}
