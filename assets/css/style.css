@@ -41,6 +41,7 @@ h2 {
 #status-message{
 	color: red;
 }
+
 .selection:hover{
 	background-color: grey;
 	color: white;

@@ -11,29 +11,31 @@
 <body>
     <div class="container">
         <div class="jumbotron" id="scoreboard">
-            <h2 class="text-center">Rock, Paper, Scissors Online</h2><p class="text-center" id="status-message"></p>
-            <div class="form-group" id="input-name">
-                <label class="control-label" for="name-input" id="input-label">Name, please: </label>
-                </br>
-                <input type="text" class="form-control" id="name-input" placeholder="type your name">
-                <span class="input-group-btn">
-      <button type="submit" class="btn btn-default" id="name-submit">Submit</button>
-    </span>
+            <h2 class="text-center">Rock, Paper, Scissors Online</h2>
+            <p class="text-center" id="status-message"></p>
+            <div id="input-name-container">
+                <div class="form-group" id="input-name">
+                    <label class="control-label" for="name-input" id="input-label">Name, please: </label>
+                    <input type="text" class="form-control" id="name-input" placeholder="type your name">
+     				 <button type="submit" class="btn btn-default" id="name-submit">Submit</button>
+                </div>
             </div>
             <div class="row">
-                <div class="col-xs-5 offset-xs-1" id="p1-scoreboard">
+                <div class="col-xs-5 offset-xs-1" id="user-scoreboard">
                     <div class="panel">
-                        <div class="panel-header text-center" id="p1-header">Player 1 Wins</div>
+                        <div class="panel-header text-center" id="user-header">Your Info</div>
                         <div class="panel-body">
-                            <p class="win-count text-center" id="p1-wincount">2</p>
+                            <p class="text-center" id="user-message"></p>
+                            <p class="win-count text-center" id="user-wincount"></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-5 offset-xs-1" id="p2-scoreboard">
+                <div class="col-xs-5 offset-xs-1" id="opponent-scoreboard">
                     <div class="panel">
-                        <div class="panel-header text-center" id="p2-header">Player 2 Wins</div>
+                        <div class="panel-header text-center" id="opponent-header">Opponent Info</div>
                         <div class="panel-body">
-                            <p class="win-count text-center" id="p2-wincount">1</p>
+                            <p class="text-center" id="opponent-message"></p>
+                            <p class="win-count text-center" id="opponent-wincount"></p>
                         </div>
                     </div>
                 </div>
@@ -56,27 +58,14 @@
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <ul class="list-group"> Player 1 Choice
-                    <li class="list-group-item selection p1 rock" id="p1-rock" data-pointVal="0">
+                <ul class="list-group" id="selection-menu"> Make Your Choice
+                    <li class="list-group-item selection user rock" id="user-rock" data-pointVal="0">
                         <span class="badge">R</span> Rock
                     </li>
-                    <li class="list-group-item selection p1 paper" id="p1-paper" data-pointVal="1">
+                    <li class="list-group-item selection user paper" id="user-paper" data-pointVal="1">
                         <span class="badge">P</span> Paper
                     </li>
-                    <li class="list-group-item selection p1 scissors" id="p1-scissors" data-pointVal="2">
-                        <span class="badge">S</span> Scissors
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-6">
-                <ul class="list-group"> Player 2 Choice
-                    <li class="list-group-item selection p2 rock" id="p2-rock" data-pointVal="0">
-                        <span class="badge">R</span> Rock
-                    </li>
-                    <li class="list-group-item selection p2 paper" id="p2-paper" data-pointVal="1">
-                        <span class="badge">P</span> Paper
-                    </li>
-                    <li class="list-group-item selection p2 scissors" id="p2-scissors" data-pointVal="2">
+                    <li class="list-group-item selection user scissors" id="user-scissors" data-pointVal="2">
                         <span class="badge">S</span> Scissors
                     </li>
                 </ul>
@@ -87,8 +76,8 @@
             <thead>
                 <tr>
                     <th>Turn #</th>
-                    <th>P1 Choice</th>
-                    <th>P2 Choice</th>
+                    <th>user Choice</th>
+                    <th>opponent Choice</th>
                     <th>Outcome</th>
                 </tr>
             </thead>
@@ -101,7 +90,6 @@
                 </tr>
             </tbody>
         </table>
-        <a href="#" class="btn btn-lg btn-info" id="reset">Reset</a>
     </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
