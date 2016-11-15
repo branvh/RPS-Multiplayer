@@ -42,6 +42,21 @@ h2 {
 	color: red;
 }
 
+#play-again-box{
+	display: none;
+   background-color: rgb(231,231,231);
+}
+
+.chat-log {
+	font-size: 14px !important;
+	margin: 1px 1px !important;
+}
+
+#chat-panel{
+	height: 100px;
+	padding: 2px;
+	overflow-y: scroll;
+}
 .selection:hover{
 	background-color: grey;
 	color: white;
