@@ -185,6 +185,49 @@ let gameDB = {
 
             });
 
+        //disconnect event handler will be applied each time user gets REGISTERED
+        // let connectionStatus = gameDB.database.ref('players/' + userID + '/connection');
+
+        // //set conenction status of user to false upon disconnnect, which will trigger listner @ opponent
+        // connectionStatus.onDisconnect().set(false)
+        // 	.then(function (){
+
+        // 		//empty out status to trigger appropriate event messaging due to disconnect
+        //         let target = gameDB.database.ref('players/' + userID).update({
+
+        //             status: '',
+
+        //         })
+
+
+        // 	});
+
+        // //to check for connection state
+        // let connectedRef = firebase.database().ref('/.info/connected');
+
+        // connectedRef.on('value', function(info) {
+
+        //     connectedRef.on('value', function(snap) {
+        //         if (snap.val() === true) {
+        //             console.log('connected');
+
+        //             //ensure that status is updated to true or remains 'true' and status back to playing
+        //             let target = gameDB.database.ref('players/' + userID).update({
+
+        //             status: 'playing',
+        //             connection: true
+        //         })
+
+        //         } else {
+        //             console.log('disconnected');
+        //             $('#status-message').html('Disconnected....');
+        //         }
+        //     });
+
+        // });
+
+
+
     },
     createInitialRecord() {
 
@@ -198,6 +241,7 @@ let gameDB = {
             choice: '',
             status: 'ready',
             opponent: game.opponent,
+            connection: true,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
 
         })
@@ -235,6 +279,10 @@ let game = {
                 if (!snapshot.child('1').exists() || !snapshot.child('2').exists()) {
                     return;
                 }
+
+                // if (snapshot.val()[userID] && snapshot.val()[game.opponent].connection === false){
+                // 	$('#status-message').html('Opponent disconnected...waiting...');
+                // }
 
                 //clear waiting message
                 if (snapshot.val()[userID].status === 'ready' && snapshot.val()[game.opponent].status === 'ready') {
@@ -284,10 +332,7 @@ let game = {
 
                             //evaluate choices
                             let choiceDiff = userData.choice - opponentData.choice;
-                            console.log('diff');
                             let outcome = game.evaluate(choiceDiff);
-                            console.log('outcome was ' + outcome);
-
                             //update the gameplay table
 
                             let newRow = $('<tr>');
@@ -305,12 +350,9 @@ let game = {
                             let outcomeTD = $('<td>');
                             outcomeTD.html(game.outcomes[outcome]);
 
-                            newRow.append(turnTD);
-                            newRow.append(userChoice);
-                            newRow.append(opponentChoice);
-                            newRow.append(outcomeTD);
+                            newRow.append(turnTD).append(userChoice).append(opponentChoice).append(outcomeTD);
 
-                            $('tbody').append(newRow);
+                            $('tbody').prepend(newRow);
 
                             //mechanism to update win / loss count in DB
                             let userWins = userData.wins;
@@ -459,6 +501,3 @@ let chat = {
     }
 
 }
-
-
-//11-15: disconect handler
